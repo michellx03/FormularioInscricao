@@ -31,6 +31,24 @@ function InscritoConsultaController($scope, $http, $routeParams, $location) {
 }
 
 function InscritoCadastroController($scope, $http,  $location) {
+	$scope.ListaPremio = {};
+	$scope.Status = {};
+	
+	$http({
+		method : "GET",
+		url : '/AcessoRestrito/rest/premio/list',
+		cache : false
+	}).success(function(data) {
+		$scope.ListaPremio = data;
+	});
+	
+	$http({
+		method : "GET",
+		url : '/AcessoRestrito/rest/status/list',
+		cache : false
+	}).success(function(data) {
+		$scope.Status = data;
+	});
 
 	$scope.Cadastrar = function(id) {
 
@@ -42,9 +60,9 @@ function InscritoCadastroController($scope, $http,  $location) {
 			inscCelular : $scope.inscCelular,
 			inscCidade : $scope.inscCidade,
 			inscEstado : $scope.inscEstado,
-			inscPremId : $scope.inscPremio,
+			inscPremId : $("#premio option:selected").val(),
 			inscEmail : $scope.inscEmail,
-			inscStinId : 1,
+			inscStinId : $("#status option:selected").val(),
 			inscNumeroInscricao : $scope.inscNumeroInscricao,
 			
 		}
@@ -64,15 +82,33 @@ function InscritoCadastroController($scope, $http,  $location) {
 }
 
 function InscritoAlteracaoController($scope, $http, $routeParams, $location) {
+	
+	$scope.ListaPremio = {};
+	$scope.Status = {};
+	$scope.Inscrito;
+	
+	$http({
+		method : "GET",
+		url : '/AcessoRestrito/rest/premio/list',
+		cache : false
+	}).success(function(data) {
+		$scope.ListaPremio = data;
+	});
+	
+	$http({
+		method : "GET",
+		url : '/AcessoRestrito/rest/status/list',
+		cache : false
+	}).success(function(data) {
+		$scope.Status = data;
+	});
 
 			$http({
 				method : "GET",
-				url : '/AcessoRestrito/rest/inscrito/alteracao?id='+$routeParams.id+'',
+				url : '/AcessoRestrito/rest/inscrito/obterInscritos?id='+$routeParams.id+'',
 				cache : false
 			}).success(function(data) {
-				$scope.notiNoticia = data.notiNoticia;
-				$scope.notiFoto = data.notiFoto;
-				
+				$scope.Inscrito = data;
 				$scope.inscNomeCompleto = data.inscNomeCompleto;
 				$scope.inscRg = data.inscRg;
 				$scope.inscCpf = data.inscCpf;
@@ -80,14 +116,24 @@ function InscritoAlteracaoController($scope, $http, $routeParams, $location) {
 				$scope.inscCelular = data.inscCelular;
 				$scope.inscCidade = data.inscCidade;
 				$scope.inscEstado = data.inscEstado;
-				$scope.inscPremio = data.inscPremio;
+				
+				var premio = data.premPremio == null?"Selecione uma opcao":data.premPremio;
+				$('#premio').append(
+						'<option selected="true" value="' + data.inscPremId
+								+ '">' + premio + ' </option> ');
+				
 				$scope.inscEmail = data.inscEmail;
-				$scope.inscStatus = data.inscStatus;
+				
+				var status = data.stinStatus == null?"Selecione uma opcao":data.stinStatus;
+				$('#status').append(
+						'<option selected="true" value="' + data.inscStinId
+								+ '">' + status + ' </option> ');
+				
 				$scope.inscNumeroInscricao = data.inscNumeroInscricao;
 			});
 			
 			$scope.Alterar = function() {
-
+				
 				var Inscrito = {
 					inscId : $routeParams.id,
 					inscNomeCompleto : $scope.inscNomeCompleto,
@@ -97,10 +143,11 @@ function InscritoAlteracaoController($scope, $http, $routeParams, $location) {
 					inscCelular : $scope.inscCelular,
 					inscCidade : $scope.inscCidade,
 					inscEstado : $scope.inscEstado,
-					inscPremId : $scope.inscPremio,
 					inscEmail : $scope.inscEmail,
-					inscStinId : $scope.inscStatus,
 					inscNumeroInscricao : $scope.inscNumeroInscricao,
+					inscPremId :$("#premio option:selected").val() == null?"":$("#premio option:selected").val(),
+					inscStinId : $("#status option:selected").val() == null?"":$("#status option:selected").val(),
+					
 				}
 
 					$http({
