@@ -145,6 +145,30 @@ public class InscritoResource {
 		}
 		return retorna;
 	}	
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/consulta")
+	public obterInscrito obterInscrito() {
+		
+		String select = "SELECT insc_id, insc_nome_completo, insc_numero_inscricao, prem_premio FROM sistema.inscrito "
+						+" INNER JOIN sistema.status_inscrito ON insc_stin_id = stin_id "
+						+" INNER JOIN sistema.premio ON insc_prem_id = prem_id ";
+		
+		Query query = entityManager.createNativeQuery(select);
+		List<Object[]> list = query.getResultList();
+		
+		obterInscrito retorna = new obterInscrito();
+		
+		for (Object[] obj : list) {
+			retorna.setInscId(Long.parseLong(obj[0].toString()==null?"":obj[0].toString()));
+			retorna.setInscNomeCompleto(obj[1].toString()==null?"":obj[1].toString());
+			retorna.setInscNumeroInscricao(Integer.parseInt(obj[2].toString()==null?"":obj[2].toString()));
+			retorna.setPremPremio(obj[3].toString()==null?"":obj[3].toString());
+		}
+		return retorna;
+	}	
 
 }
 
