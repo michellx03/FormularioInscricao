@@ -116,7 +116,7 @@ public class InscritoResource {
 	public obterInscrito obterDados(@QueryParam("id") Integer id) {
 		
 		String select = "SELECT insc_id, insc_nome_completo, insc_rg, insc_cpf, insc_telefone, insc_celular, insc_cidade, insc_estado, insc_email, insc_numero_inscricao, "
-						+"insc_stin_id, stin_status, prem_premio, insc_prem_id FROM sistema.inscrito "
+						+"insc_stin_id, stin_status, prem_premio, insc_prem_id, insc_estudante FROM sistema.inscrito "
 						+"INNER JOIN sistema.status_inscrito ON insc_stin_id = stin_id "
 						+"INNER JOIN sistema.premio ON insc_prem_id = prem_id "
 						+"WHERE insc_id ="+id+"";
@@ -141,7 +141,8 @@ public class InscritoResource {
 			retorna.setInscStinId(Integer.parseInt(obj[10].toString()==null?"":obj[10].toString()));
 			retorna.setStinStatus(obj[11].toString()==null?"":obj[11].toString());
 			retorna.setPremPremio(obj[12].toString()==null?"":obj[12].toString());
-			retorna.setInscPremId(Integer.parseInt(obj[13].toString()));
+			retorna.setInscPremId(Integer.parseInt(obj[13].toString()==null?"":obj[13].toString()));
+			retorna.setStinEstudante(obj[14].toString()==null?"":obj[14].toString());
 		}
 		return retorna;
 	}	
@@ -187,7 +188,14 @@ class obterInscrito{
 	private int inscNumeroInscricao;
 	private int inscStinId;
 	private String stinStatus;
+	private String stinEstudante;
 	
+	public String getStinEstudante() {
+		return stinEstudante;
+	}
+	public void setStinEstudante(String stinEstudante) {
+		this.stinEstudante = stinEstudante;
+	}
 	public Long getInscId() {
 		return inscId;
 	}

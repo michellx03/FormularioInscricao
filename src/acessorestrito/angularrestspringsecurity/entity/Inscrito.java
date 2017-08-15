@@ -11,7 +11,7 @@ import javax.persistence.*;
 @javax.persistence.Entity
 @NamedQuery(name="Inscrito.findAll", query="SELECT i FROM Inscrito i")
 @Table (name = "inscrito", schema = "sistema")
-public class Inscrito implements  Entity {
+public class Inscrito implements Entity {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -33,6 +33,9 @@ public class Inscrito implements  Entity {
 
 	@Column(name="insc_estado")
 	private String inscEstado;
+
+	@Column(name="insc_estudante")
+	private String inscEstudante;
 
 	@Column(name="insc_nome_completo")
 	private String inscNomeCompleto;
@@ -101,6 +104,14 @@ public class Inscrito implements  Entity {
 
 	public void setInscEstado(String inscEstado) {
 		this.inscEstado = inscEstado;
+	}
+
+	public String getInscEstudante() {
+		return this.inscEstudante;
+	}
+
+	public void setInscEstudante(String inscEstudante) {
+		this.inscEstudante = inscEstudante;
 	}
 
 	public String getInscNomeCompleto() {

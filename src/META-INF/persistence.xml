@@ -5,8 +5,8 @@
 	<persistence-unit name="examplePU" transaction-type="RESOURCE_LOCAL">
 		<mapping-file>META-INF/orm.xml</mapping-file>
 		<class>acessorestrito.angularrestspringsecurity.entity.Premio</class>
-		<class>acessorestrito.angularrestspringsecurity.entity.Inscrito</class>
 		<class>acessorestrito.angularrestspringsecurity.entity.StatusInscrito</class>
 		<class>acessorestrito.angularrestspringsecurity.entity.Informacoes</class>
+		<class>acessorestrito.angularrestspringsecurity.entity.Inscrito</class>
 	</persistence-unit>
 </persistence>

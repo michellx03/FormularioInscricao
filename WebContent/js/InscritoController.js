@@ -64,6 +64,7 @@ function InscritoCadastroController($scope, $http,  $location) {
 			inscEmail : $scope.inscEmail,
 			inscStinId : $("#status option:selected").val(),
 			inscNumeroInscricao : $scope.inscNumeroInscricao,
+			inscEstudante : $("input[name=cartao]").val(),
 			
 		}
 
@@ -130,10 +131,10 @@ function InscritoAlteracaoController($scope, $http, $routeParams, $location) {
 								+ '">' + status + ' </option> ');
 				
 				$scope.inscNumeroInscricao = data.inscNumeroInscricao;
+				$scope.inscEstudante = data.inscEstudante;
 			});
 			
 			$scope.Alterar = function() {
-				
 				var Inscrito = {
 					inscId : $routeParams.id,
 					inscNomeCompleto : $scope.inscNomeCompleto,
@@ -147,6 +148,7 @@ function InscritoAlteracaoController($scope, $http, $routeParams, $location) {
 					inscNumeroInscricao : $scope.inscNumeroInscricao,
 					inscPremId :$("#premio option:selected").val() == null?"":$("#premio option:selected").val(),
 					inscStinId : $("#status option:selected").val() == null?"":$("#status option:selected").val(),
+					inscEstudante : $("input[name=cartao]").val(),
 					
 				}
 
