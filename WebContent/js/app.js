@@ -16,6 +16,11 @@ angular
 								controller : UsuarioConsultaController,
 
 							});
+							$routeProvider.when('/InformacaoConsulta', {
+								templateUrl : 'partials/Informacao/Consulta.html',
+								controller : InformacaoConsultaController,
+
+							});							
 							$routeProvider.when('/NoticiaConsulta', {
 								templateUrl : 'partials/Noticia/Consulta.html',
 								controller : NoticiaConsultaController,
@@ -50,6 +55,14 @@ angular
 									{
 										templateUrl : 'partials/Inscrito/Alteracao.html',
 										controller : InscritoAlteracaoController,
+
+									});
+							$routeProvider
+							.when(
+									'/InformacaoAlteracao/:id',
+									{
+										templateUrl : 'partials/Informacao/Alteracao.html',
+										controller : InformacaoAlteracaoController,
 
 									});
 							$routeProvider

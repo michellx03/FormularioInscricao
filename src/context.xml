@@ -67,7 +67,9 @@
 	<bean id="premioDao"
 		class="acessorestrito.angularrestspringsecurity.dao.premio.JpaPremioDao">
 	</bean>
-	
+	<bean id="informacaoDao"
+		class="acessorestrito.angularrestspringsecurity.dao.informacoes.JpaInformacaoDao">
+	</bean>
 	<bean id="statusDao"
 		class="acessorestrito.angularrestspringsecurity.dao.status.JpaStatusDao">
 	</bean>
