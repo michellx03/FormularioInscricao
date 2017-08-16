@@ -102,6 +102,11 @@ angular
 								controller : InscritoCadastroController,
 
 							});
+							$routeProvider.when('/Principal', {
+								templateUrl : 'Principal.html',
+								controller : InscritoSiteCadastroController,
+
+							});
 							$routeProvider.when('/PremioCadastro', {
 								templateUrl : 'partials/Premio/Cadastro.html',
 								controller : PremioCadastroController,
