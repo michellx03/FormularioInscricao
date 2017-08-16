@@ -73,7 +73,9 @@
 	<bean id="statusDao"
 		class="acessorestrito.angularrestspringsecurity.dao.status.JpaStatusDao">
 	</bean>
-	
+	<bean id="statusPremioDao"
+		class="acessorestrito.angularrestspringsecurity.dao.status_premio.JpaStatusPremioDao">
+	</bean>
 	<bean id="inscritoDao"
 		class="acessorestrito.angularrestspringsecurity.dao.inscrito.JpaInscritoDao">
 	</bean>

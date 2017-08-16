@@ -8,5 +8,6 @@
 		<class>acessorestrito.angularrestspringsecurity.entity.StatusInscrito</class>
 		<class>acessorestrito.angularrestspringsecurity.entity.Informacoes</class>
 		<class>acessorestrito.angularrestspringsecurity.entity.Inscrito</class>
+		<class>acessorestrito.angularrestspringsecurity.entity.StatusPremio</class>
 	</persistence-unit>
 </persistence>

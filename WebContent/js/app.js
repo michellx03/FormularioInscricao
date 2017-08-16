@@ -31,6 +31,11 @@ angular
 								controller : StatusConsultaController,
 
 							});
+							$routeProvider.when('/StatusPremioConsulta', {
+								templateUrl : 'partials/StatusPremio/Consulta.html',
+								controller : StatusPremioConsultaController,
+
+							});
 							$routeProvider.when('/InscritoConsulta', {
 								templateUrl : 'partials/Inscrito/Consulta.html',
 								controller : InscritoConsultaController,
