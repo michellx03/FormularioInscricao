@@ -29,11 +29,30 @@ function PremioConsultaController($scope, $http, $routeParams, $location) {
 }
 
 function PremioCadastroController($scope, $http,  $location) {
+	$scope.Status = {};
+	$scope.ListaPremio = {};
+	
+	$http({
+		method : "GET",
+		url : '/AcessoRestrito/rest/statusPremio/list',
+		cache : false
+	}).success(function(data) {
+		$scope.Status = data;
+	});
 
+	$http({
+		method : "GET",
+		url : '/AcessoRestrito/rest/premio/list',
+		cache : false
+	}).success(function(data) {
+		$scope.ListaPremio = data;
+	});
+		
 	$scope.Cadastrar = function(id) {
 
 		var Premio = {
 			premPremio : $scope.premPremio,
+			premStatus : $("#status option:selected").val(),
 		}
 
 			$http({
@@ -51,14 +70,38 @@ function PremioCadastroController($scope, $http,  $location) {
 }
 
 function PremioAlteracaoController($scope, $http, $routeParams, $location) {
-	//alert($routeParams.id);
-
+	$scope.Status = {};	
+	$scope.ListaPremio = {};
+	$scope.Premio;
+	
+	$http({
+		method : "GET",
+		url : '/AcessoRestrito/rest/statusPremio/list',
+		cache : false
+	}).success(function(data) {
+		$scope.Status = data;
+	});
+	
+	$http({
+		method : "GET",
+		url : '/AcessoRestrito/rest/premio/list',
+		cache : false
+	}).success(function(data) {
+		$scope.ListaPremio = data;
+	});
+	
 			$http({
 				method : "GET",
-				url : '/AcessoRestrito/rest/premio/alteracao?id='+$routeParams.id+'',
+				url : '/AcessoRestrito/rest/premio/obterPremios?id='+$routeParams.id+'',
 				cache : false
 			}).success(function(data) {
+				$scope.Premio = data;
 				$scope.premPremio = data.premPremio;
+				
+				var status = data.stprStatus == null?"Selecione uma opcao":data.stprStatus;
+				$('#status').append(
+						'<option selected="true" value="' + data.premStatus
+								+ '">' + status + ' </option> ');
 				
 			});
 			

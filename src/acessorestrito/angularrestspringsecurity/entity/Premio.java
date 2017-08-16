@@ -22,6 +22,9 @@ public class Premio implements Entity {
 	@Column(name="prem_premio")
 	private String premPremio;
 
+	@Column(name="prem_status")
+	private Integer premStatus;
+
 	public Premio() {
 	}
 
@@ -39,6 +42,14 @@ public class Premio implements Entity {
 
 	public void setPremPremio(String premPremio) {
 		this.premPremio = premPremio;
+	}
+
+	public Integer getPremStatus() {
+		return this.premStatus;
+	}
+
+	public void setPremStatus(Integer premStatus) {
+		this.premStatus = premStatus;
 	}
 
 }
