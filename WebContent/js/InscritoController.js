@@ -131,7 +131,8 @@ function InscritoAlteracaoController($scope, $http, $routeParams, $location) {
 								+ '">' + status + ' </option> ');
 				
 				$scope.inscNumeroInscricao = data.inscNumeroInscricao;
-				$scope.inscEstudante = data.inscEstudante;
+				$scope.inscEstudante = $("input[value='"+data.stinEstudante+"']").prop("checked", true);
+				
 			});
 			
 			$scope.Alterar = function() {
