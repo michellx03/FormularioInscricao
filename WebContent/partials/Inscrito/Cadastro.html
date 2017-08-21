@@ -43,8 +43,7 @@
 							</label>
 							<div class="col-md-4">
 								<div class="input-icon right">
-									<i class="fa"></i> <input ng-model="inscNomeCompleto" id="inscrito" type="text" class="form-control"
-					 />
+									<i class="fa"></i> <input ng-model="inscNomeCompleto" id="inscrito" type="text" class="form-control" required ng-minlength=10 />
 								</div>
 							</div>
 						</div>
@@ -147,7 +146,7 @@
 							</label>
 							<div class="col-md-4">
 								<div class="input-icon right">
-									<i class="fa"></i> <input ng-model="inscEmail"  id="email" type="text" class="form-control"
+									<i class="fa"></i> <input ng-model="inscEmail"  id="email" type=email" class="form-control" 
 										/>
 								</div>
 							</div>

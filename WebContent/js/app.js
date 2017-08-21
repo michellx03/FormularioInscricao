@@ -102,11 +102,7 @@ angular
 								controller : InscritoCadastroController,
 
 							});
-							$routeProvider.when('/Principal', {
-								templateUrl : 'Principal.html',
-								controller : InscritoSiteCadastroController,
-
-							});
+							
 							$routeProvider.when('/PremioCadastro', {
 								templateUrl : 'partials/Premio/Cadastro.html',
 								controller : PremioCadastroController,
@@ -144,7 +140,7 @@ angular
 								template : '<div></div>',
 								controller : DashboardIndexController
 							});
-
+							
 							$routeProvider.otherwise({
 								template : '<div></div>',
 								controller : IndexController
@@ -261,3 +257,4 @@ function DashboardController($scope) {
 function IndexController($scope, $cookieStore) {
 
 }
+

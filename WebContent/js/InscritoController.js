@@ -51,7 +51,7 @@ function InscritoCadastroController($scope, $http,  $location) {
 	});
 
 	$scope.Cadastrar = function(id) {
-
+		
 		var Inscrito = {
 			inscNomeCompleto : $scope.inscNomeCompleto,
 			inscRg : $scope.inscRg,

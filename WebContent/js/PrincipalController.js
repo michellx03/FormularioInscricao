@@ -31,7 +31,7 @@ function InscritoSiteCadastroController($scope, $http,  $location) {
 			//inscPremId : $("#premio option:selected").val(),
 			inscEmail : $scope.inscEmail,
 			//inscStinId : $("#status option:selected").val(),
-			inscNumeroInscricao : $scope.inscNumeroInscricao,
+			//inscNumeroInscricao : $scope.inscNumeroInscricao,
 			inscEstudante : $("input[name=cartao]").val(),
 			
 		}
