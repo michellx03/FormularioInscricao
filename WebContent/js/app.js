@@ -1,3 +1,5 @@
+
+
 angular
 		.module(
 				'exampleApp',
@@ -249,6 +251,7 @@ angular
 function DashboardIndexController($scope, $cookieStore) {
 	window.location.href = '/AcessoRestrito/index.html#!/Dashboard'
 }
+
 
 function DashboardController($scope) {
 

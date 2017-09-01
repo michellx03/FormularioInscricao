@@ -42,7 +42,7 @@ function InscritoSiteCadastroController($scope, $http,  $location) {
 				data : Inscrito,
 				cache : false
 			}).success(function(data) {
-				$location.path("/InscritoConsulta");
+				$location.path("/Confirmada");
 				$('#showToastSucesso').click();
 			});
 
