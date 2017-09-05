@@ -91,7 +91,7 @@ function InscritoAlteracaoController($scope, $http, $routeParams, $location) {
 	$http({
 		method : "GET",
 		url : '/AcessoRestrito/rest/premio/list',
-		cache : false
+		//cache : false
 	}).success(function(data) {
 		$scope.ListaPremio = data;
 	});
@@ -99,9 +99,11 @@ function InscritoAlteracaoController($scope, $http, $routeParams, $location) {
 	$http({
 		method : "GET",
 		url : '/AcessoRestrito/rest/status/list',
-		cache : false
+		//cache : false
 	}).success(function(data) {
 		$scope.Status = data;
+		
+	
 	});
 
 			$http({

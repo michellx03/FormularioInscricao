@@ -28,10 +28,10 @@ function InscritoSiteCadastroController($scope, $http,  $location) {
 			inscCelular : $scope.inscCelular,
 			inscCidade : $scope.inscCidade,
 			inscEstado : $scope.inscEstado,
-			//inscPremId : $("#premio option:selected").val(),
+			inscPremId : $("#premio option:selected").val(),
 			inscEmail : $scope.inscEmail,
-			//inscStinId : $("#status option:selected").val(),
-			//inscNumeroInscricao : $scope.inscNumeroInscricao,
+			inscStinId : $("#status option:selected").val(),
+			inscNumeroInscricao : Math.random(),
 			inscEstudante : $("input[name=cartao]").val(),
 			
 		}

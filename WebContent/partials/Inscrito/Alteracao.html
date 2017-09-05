@@ -125,11 +125,10 @@
 								<select id="premio" class="form-control select2"
 									style="width: 352px">
 									
-
 									<option
 										ng-repeat="premios in ListaPremio | orderBy:'premPremio' "
 										ng-if="premios.premId != Inscrito.inscPremId"
-										value="{{premios.premId}}">{{premios.premPremio}}</option>
+										value="{{premios.premId}}">{{premios.premPremio}}</option>	
 								</select>
 							</div>
 						</div>
@@ -182,7 +181,7 @@
 									<option
 										ng-repeat="status in Status | orderBy:'stinStatus' "
 										ng-if="status.stinId != Inscrito.inscStinId"
-										value="{{status.stinId}}">{{status.stinStatus}}</option>
+										value="{{status.stinId}}">{{status.stinStatus}}</option>	
 								</select>
 							</div>
 						</div>

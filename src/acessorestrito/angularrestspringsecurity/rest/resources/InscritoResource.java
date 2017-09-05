@@ -12,6 +12,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import Uteis.DadosUsuarioEmail;
+import Uteis.EnviarEmail;
 //import Uteis.Conversores;
 //import Uteis.DadosUsuarioEmail;
 //import Uteis.EnviarEmail;
@@ -58,6 +61,17 @@ public class InscritoResource {
 		this.entityManager = entityManager;
 	}
 	
+	/*
+	    DadosUsuarioEmail email = new DadosUsuarioEmail();
+		email.setEmail(emailUsuarioLogado.toString());
+		email.setName(dados.getDausNomeCompleto());
+		email.setSubject("Plano - Classi Vale");
+		email.setMessage("Ola! "+dados.getDausNomeCompleto()+"\nPlano adquirido com sucesso!");
+			
+		EnviarEmail enviar = new EnviarEmail();
+		enviar.enviarEmail(email);
+	*/
+	
 	@Autowired
 	private InscritoDao inscritoDaoInterface;
 
@@ -78,6 +92,14 @@ public class InscritoResource {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	public Inscrito Cadastrar(Inscrito inscrito) {
+		DadosUsuarioEmail email = new DadosUsuarioEmail();
+		email.setEmail(inscrito.getInscEmail());
+		email.setName(inscrito.getInscNomeCompleto());
+		email.setSubject("Plano - Classi Vale");
+		email.setMessage("Ola! "+inscrito.getInscNomeCompleto()+"\nInscricao realizada com sucesso!");
+			
+		EnviarEmail enviar = new EnviarEmail();
+		enviar.enviarEmail(email);
 		
 		return this.inscritoDaoInterface.save(inscrito);
 
