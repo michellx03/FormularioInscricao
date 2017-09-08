@@ -109,7 +109,7 @@ function InscritoAlteracaoController($scope, $http, $routeParams, $location) {
 			$http({
 				method : "GET",
 				url : '/AcessoRestrito/rest/inscrito/obterInscritos?id='+$routeParams.id+'',
-				cache : false
+				//cache : false
 			}).success(function(data) {
 				$scope.Inscrito = data;
 				$scope.inscNomeCompleto = data.inscNomeCompleto;

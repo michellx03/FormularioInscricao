@@ -61,17 +61,6 @@ public class InscritoResource {
 		this.entityManager = entityManager;
 	}
 	
-	/*
-	    DadosUsuarioEmail email = new DadosUsuarioEmail();
-		email.setEmail(emailUsuarioLogado.toString());
-		email.setName(dados.getDausNomeCompleto());
-		email.setSubject("Plano - Classi Vale");
-		email.setMessage("Ola! "+dados.getDausNomeCompleto()+"\nPlano adquirido com sucesso!");
-			
-		EnviarEmail enviar = new EnviarEmail();
-		enviar.enviarEmail(email);
-	*/
-	
 	@Autowired
 	private InscritoDao inscritoDaoInterface;
 

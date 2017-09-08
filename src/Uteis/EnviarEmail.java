@@ -18,8 +18,8 @@ public class EnviarEmail {
 
 	public EnviarEmail() {
 
-		final String username = "seu email aqui";
-		final String password = "sua senha aqui";
+		final String username = "";
+		final String password = "";
 		// OBS: tem que liberar acesso na conta do gmail, link : https://www.google.com/settings/security/lesssecureapps
 		
 		Properties props = new Properties();

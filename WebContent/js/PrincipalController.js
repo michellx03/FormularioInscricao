@@ -28,9 +28,9 @@ function InscritoSiteCadastroController($scope, $http,  $location) {
 			inscCelular : $scope.inscCelular,
 			inscCidade : $scope.inscCidade,
 			inscEstado : $scope.inscEstado,
-			inscPremId : $("#premio option:selected").val(),
+			inscPremId : 0,
 			inscEmail : $scope.inscEmail,
-			inscStinId : $("#status option:selected").val(),
+			inscStinId : 1,
 			inscNumeroInscricao : Math.random(),
 			inscEstudante : $("input[name=cartao]").val(),
 			
