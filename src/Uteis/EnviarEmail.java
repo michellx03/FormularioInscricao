@@ -1,10 +1,7 @@
 package Uteis;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.Locale;
 import java.util.Properties;
-import java.util.ResourceBundle;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -21,16 +18,19 @@ public class EnviarEmail {
 
 	public EnviarEmail() {
 
+		final String username = "seu email aqui";
+		final String password = "sua senha aqui";
+		// OBS: tem que liberar acesso na conta do gmail, link : https://www.google.com/settings/security/lesssecureapps
+		
 		Properties props = new Properties();
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.host", "mail.classisvale.com.br");
+		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.port", "587");
-		props.put("mail.debug", "true");
 
-		session = Session.getInstance(props,  new javax.mail.Authenticator() {
+		session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("", "");
+				return new PasswordAuthentication(username, password);
 			}
 		});
 
@@ -41,32 +41,13 @@ public class EnviarEmail {
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("notificacao@classisvale.com.br"));
+			message.setFrom(new InternetAddress("01fernando.ti@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(dados.getEmail()));
 			message.setSubject(dados.getSubject());
 			message.setText(dados.getMessage());
 
 			Transport.send(message);
-
-		} catch (MessagingException e) {
-			throw new RuntimeException(e);
-		}
-
-		return "";
-
-	}
-
-	public String enviarEmailParaMinMesmo(DadosUsuarioEmail dados) {
-
-		try {
-
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("notificacao@classisvale.com.br"));
-			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("classivalenegocios@gmail.com"));
-			message.setSubject(dados.getSubject());
-			message.setText(dados.getMessage());
-
-			Transport.send(message);
+			confirmacaoEnvio(dados);
 
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
@@ -81,7 +62,6 @@ public class EnviarEmail {
 		try {
 
 			Message message = new MimeMessage(session);
-
 			message.setFrom(new InternetAddress("01fernando.ti@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(dados.getEmail()));
 			message.setSubject("Contato via web site");
@@ -97,3 +77,4 @@ public class EnviarEmail {
 	}
 
 }
+
